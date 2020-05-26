@@ -6,6 +6,9 @@
     </head>
     <body>
         <script>
+            const playerSelection = 'PaPeR';
+            const computerSelection = computerPlay();
+
             function computerPlay() {
                 let options = ["Rock", "Paper", "Scissors"];
 
@@ -14,13 +17,49 @@
             }
 
             function playRound(playerSelection, computerSelection) {
+                switch(true) {
+                    case playerSelection.toLowerCase() == 'rock' && computerSelection == 'Rock':
+                        return 'Rock with rock is a tie!';
+                        break;
 
+                    case playerSelection.toLowerCase() == 'rock' && computerSelection == 'Paper':
+                        return 'You lose! Paper beats rock';
+                        break;
+
+                    case playerSelection.toLowerCase() == 'rock' && computerSelection == 'Scissors':
+                        return 'You win! Rock beats scissors';
+                        break;
+
+                    case playerSelection.toLowerCase() == 'paper' && computerSelection == 'Rock':
+                        return 'You win! Paper beats rock';
+                        break;
+
+                    case playerSelection.toLowerCase() == 'paper' && computerSelection == 'Paper':
+                        return 'Paper with paper is a tie!';
+                        break;
+
+                    case playerSelection.toLowerCase() == 'paper' && computerSelection == 'Scissors':
+                        return 'You lose! Scissors beats paper';
+                        break;
+
+                    case playerSelection.toLowerCase() == 'scissors' && computerSelection == 'Rock':
+                        return 'You lose! Rock beats scissors';
+                        break;
+
+                    case playerSelection.toLowerCase() == 'scissors' && computerSelection == 'Paper':
+                        return 'You win! Scissors beats paper';
+                        break;
+
+                    case playerSelection.toLowerCase() == 'scissors' && computerSelection == 'Scissors':
+                        return 'Scissors with scissors is a tie!';
+                        break;
+
+                    default:
+                        return 'Something went wrong';
+                }
             }
 
-            const playerSelection = 'rock'
-            const computerSelection = computerPlay()
-
-            console.log(computerSelection)
+            console.log(playRound(playerSelection, computerSelection))
         </script>
     </body>
 </html>
