@@ -6,7 +6,21 @@
     </head>
     <body>
         <script>
+            function computerPlay() {
+                let options = ["Rock", "Paper", "Scissors"];
 
+                let randomChoice = options[Math.floor(Math.random()*options.length)];
+                return randomChoice
+            }
+
+            function playRound(playerSelection, computerSelection) {
+
+            }
+
+            const playerSelection = 'rock'
+            const computerSelection = computerPlay()
+
+            console.log(computerSelection)
         </script>
     </body>
 </html>
