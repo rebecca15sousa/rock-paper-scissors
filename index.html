@@ -7,51 +7,79 @@
     <body>
         <script>
             const playerSelection = 'PaPeR';
-            const computerSelection = computerPlay();
+
+            let playerWins = 0;
+            let computerWins = 0;
 
             function computerPlay() {
                 let options = ["Rock", "Paper", "Scissors"];
 
                 let randomChoice = options[Math.floor(Math.random()*options.length)];
-                return randomChoice
+                return randomChoice;
             }
 
-            function playRound(playerSelection, computerSelection) {
+            function playRound(playerSelection) {
+                const computerSelection = computerPlay();
+
                 switch(true) {
                     case playerSelection.toLowerCase() == 'rock' && computerSelection == 'Rock':
-                        return 'Rock with rock is a tie!';
+                        console.log('Rock with rock is a tie!');
+                        return [playerWins, computerWins];
+
                         break;
 
                     case playerSelection.toLowerCase() == 'rock' && computerSelection == 'Paper':
-                        return 'You lose! Paper beats rock';
+                        computerWins++;
+                        console.log('You lose! Paper beats rock');
+                        return [playerWins, computerWins];
+                        
                         break;
 
                     case playerSelection.toLowerCase() == 'rock' && computerSelection == 'Scissors':
-                        return 'You win! Rock beats scissors';
+                        playerWins++;
+                        console.log('You win! Rock beats scissors');
+                        return [playerWins, computerWins];
+                        
                         break;
 
                     case playerSelection.toLowerCase() == 'paper' && computerSelection == 'Rock':
-                        return 'You win! Paper beats rock';
+                        playerWins++;
+                        console.log('You win! Paper beats rock');
+                        return [playerWins, computerWins];
+                        
                         break;
 
                     case playerSelection.toLowerCase() == 'paper' && computerSelection == 'Paper':
-                        return 'Paper with paper is a tie!';
+                        console.log('Paper with paper is a tie!');
+                        return [playerWins, computerWins];
+                        
                         break;
 
                     case playerSelection.toLowerCase() == 'paper' && computerSelection == 'Scissors':
-                        return 'You lose! Scissors beats paper';
+                        computerWins++;
+                        console.log('You lose! Scissors beats paper');
+                        return [playerWins, computerWins];
+                        
                         break;
 
                     case playerSelection.toLowerCase() == 'scissors' && computerSelection == 'Rock':
-                        return 'You lose! Rock beats scissors';
+                        computerWins++;
+                        console.log('You lose! Rock beats scissors');
+                        return [playerWins, computerWins];
+                        
                         break;
 
                     case playerSelection.toLowerCase() == 'scissors' && computerSelection == 'Paper':
-                        return 'You win! Scissors beats paper';
+                        playerWins++;
+                        console.log('You win! Scissors beats paper');
+                        return [playerWins, computerWins];
+                        
                         break;
 
                     case playerSelection.toLowerCase() == 'scissors' && computerSelection == 'Scissors':
-                        return 'Scissors with scissors is a tie!';
+                        console.log('Scissors with scissors is a tie!');
+                        return [playerWins, computerWins];
+                        
                         break;
 
                     default:
@@ -59,7 +87,29 @@
                 }
             }
 
-            console.log(playRound(playerSelection, computerSelection))
+            function game() {
+                console.log(playRound(playerSelection));
+
+                console.log(playRound(playerSelection));
+            
+                console.log(playRound(playerSelection));
+                
+                console.log(playRound(playerSelection));
+                
+                console.log(playRound(playerSelection));
+                
+
+                if(playerWins > computerWins) {
+                    console.log('Congratulations! You won the match');
+                } else if(playerWins < computerWins) {
+                    console.log('Too bad! You lost the match');
+                } else {
+                    console.log('It is a tie')
+                }
+            }
+
+            game();
+
         </script>
     </body>
 </html>
