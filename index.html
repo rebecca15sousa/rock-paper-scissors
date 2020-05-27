@@ -6,7 +6,6 @@
     </head>
     <body>
         <script>
-            const playerSelection = 'PaPeR';
 
             let playerWins = 0;
             let computerWins = 0;
@@ -18,68 +17,60 @@
                 return randomChoice;
             }
 
-            function playRound(playerSelection) {
+            function playRound() {
                 const computerSelection = computerPlay();
+                const playerSelection = window.prompt('Rock, paper or scissors?');
 
                 switch(true) {
                     case playerSelection.toLowerCase() == 'rock' && computerSelection == 'Rock':
                         console.log('Rock with rock is a tie!');
                         return [playerWins, computerWins];
-
                         break;
 
                     case playerSelection.toLowerCase() == 'rock' && computerSelection == 'Paper':
                         computerWins++;
                         console.log('You lose! Paper beats rock');
                         return [playerWins, computerWins];
-                        
                         break;
 
                     case playerSelection.toLowerCase() == 'rock' && computerSelection == 'Scissors':
                         playerWins++;
                         console.log('You win! Rock beats scissors');
                         return [playerWins, computerWins];
-                        
                         break;
 
                     case playerSelection.toLowerCase() == 'paper' && computerSelection == 'Rock':
                         playerWins++;
                         console.log('You win! Paper beats rock');
                         return [playerWins, computerWins];
-                        
                         break;
 
                     case playerSelection.toLowerCase() == 'paper' && computerSelection == 'Paper':
                         console.log('Paper with paper is a tie!');
                         return [playerWins, computerWins];
-                        
                         break;
 
                     case playerSelection.toLowerCase() == 'paper' && computerSelection == 'Scissors':
                         computerWins++;
                         console.log('You lose! Scissors beats paper');
                         return [playerWins, computerWins];
-                        
                         break;
 
                     case playerSelection.toLowerCase() == 'scissors' && computerSelection == 'Rock':
                         computerWins++;
                         console.log('You lose! Rock beats scissors');
                         return [playerWins, computerWins];
-                        
                         break;
 
                     case playerSelection.toLowerCase() == 'scissors' && computerSelection == 'Paper':
                         playerWins++;
                         console.log('You win! Scissors beats paper');
                         return [playerWins, computerWins];
-                        
                         break;
 
                     case playerSelection.toLowerCase() == 'scissors' && computerSelection == 'Scissors':
                         console.log('Scissors with scissors is a tie!');
                         return [playerWins, computerWins];
-                        
                         break;
 
                     default:
@@ -88,15 +79,15 @@
             }
 
             function game() {
-                console.log(playRound(playerSelection));
+                console.log(playRound());
 
-                console.log(playRound(playerSelection));
+                console.log(playRound());
             
-                console.log(playRound(playerSelection));
+                console.log(playRound());
                 
-                console.log(playRound(playerSelection));
+                console.log(playRound());
                 
-                console.log(playRound(playerSelection));
+                console.log(playRound());
                 
 
                 if(playerWins > computerWins) {
