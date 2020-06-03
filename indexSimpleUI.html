@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Page title</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <button type="button" data-choice="rock" class="btn">Rock</button>
+        <button type="button" data-choice="paper" class="btn">Paper</button>
+        <button type="button" data-choice="scissors" class="btn">Scissors</button>
+
+        <div class="points"></div>
+        <div class="rounds"></div>
+        <div class="winner"></div>
+
+        <script>
+
+            let playerWins = 0;
+            let computerWins = 0;
+
+            const points = document.querySelector('.points');
+            const playerPnts = document.createElement('p');
+            const compPnts = document.createElement('p');
+
+            const div = document.querySelector('.rounds');
+            const round = document.createElement('p');
+            const winner = document.querySelector('.winner');
+            const endResult = document.createElement('p');
+
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    playRound(btn.dataset.choice);
+                    checkEndGame();
+                });
+            });
+
+            function computerPlay() {
+                let options = ["Rock", "Paper", "Scissors"];
+
+                let randomChoice = options[Math.floor(Math.random()*options.length)];
+                return randomChoice;
+            }
+
+            function playRound(playerSelection) {
+                const computerSelection = computerPlay();
+
+                switch(true) {
+                    case playerSelection == 'rock' && computerSelection == 'Rock':
+                        round.textContent = 'Rock with rock is a tie!';
+                        div.appendChild(round);
+                        playerPnts.textContent = playerWins;
+                        compPnts.textContent = computerWins;
+                        points.appendChild(playerPnts);
+                        points.appendChild(compPnts);
+                        return [playerWins, computerWins];
+                        break;
+
+                    case playerSelection == 'rock' && computerSelection == 'Paper':
+                        computerWins++;
+                        round.textContent = 'You lose! Paper beats rock';
+                        div.appendChild(round);
+                        playerPnts.textContent = playerWins;
+                        compPnts.textContent = computerWins;
+                        points.appendChild(playerPnts);
+                        points.appendChild(compPnts);
+                        return [playerWins, computerWins];
+                        break;
+
+                    case playerSelection == 'rock' && computerSelection == 'Scissors':
+                        playerWins++;
+                        round.textContent = 'You win! Rock beats scissors';
+                        div.appendChild(round);
+                        playerPnts.textContent = playerWins;
+                        compPnts.textContent = computerWins;
+                        points.appendChild(playerPnts);
+                        points.appendChild(compPnts);
+                        return [playerWins, computerWins];
+                        break;
+
+                    case playerSelection == 'paper' && computerSelection == 'Rock':
+                        playerWins++;
+                        round.textContent = 'You win! Paper beats rock';
+                        div.appendChild(round);
+                        playerPnts.textContent = playerWins;
+                        compPnts.textContent = computerWins;
+                        points.appendChild(playerPnts);
+                        points.appendChild(compPnts);
+                        return [playerWins, computerWins];
+                        break;
+
+                    case playerSelection == 'paper' && computerSelection == 'Paper':
+                        round.textContent = 'Paper with paper is a tie!';
+                        div.appendChild(round);
+                        playerPnts.textContent = playerWins;
+                        compPnts.textContent = computerWins;
+                        points.appendChild(playerPnts);
+                        points.appendChild(compPnts);
+                        return [playerWins, computerWins];
+                        break;
+
+                    case playerSelection == 'paper' && computerSelection == 'Scissors':
+                        computerWins++;
+                        round.textContent = 'You lose! Scissors beats paper';
+                        div.appendChild(round);
+                        playerPnts.textContent = playerWins;
+                        compPnts.textContent = computerWins;
+                        points.appendChild(playerPnts);
+                        points.appendChild(compPnts);
+                        return [playerWins, computerWins];
+                        break;
+
+                    case playerSelection == 'scissors' && computerSelection == 'Rock':
+                        computerWins++;
+                        round.textContent = 'You lose! Rock beats scissors';
+                        div.appendChild(round);
+                        playerPnts.textContent = playerWins;
+                        compPnts.textContent = computerWins;
+                        points.appendChild(playerPnts);
+                        points.appendChild(compPnts);
+                        return [playerWins, computerWins];
+                        break;
+
+                    case playerSelection == 'scissors' && computerSelection == 'Paper':
+                        playerWins++;
+                        round.textContent = 'You win! Scissors beats paper';
+                        div.appendChild(round);
+                        playerPnts.textContent = playerWins;
+                        compPnts.textContent = computerWins;
+                        points.appendChild(playerPnts);
+                        points.appendChild(compPnts);
+                        return [playerWins, computerWins];
+                        break;
+
+                    case playerSelection == 'scissors' && computerSelection == 'Scissors':
+                        round.textContent = 'Scissors with scissors is a tie!';
+                        div.appendChild(round);
+                        playerPnts.textContent = playerWins;
+                        compPnts.textContent = computerWins;
+                        points.appendChild(playerPnts);
+                        points.appendChild(compPnts);
+                        return [playerWins, computerWins];
+                        break;
+
+                    default:
+                        return 'Something went wrong';
+                }
+            }
+
+            function endGame() {
+                if(playerWins > computerWins) {
+                    endResult.textContent = 'Congratulations! You won the match';
+                    winner.appendChild(endResult);
+                } else {
+                    endResult.textContent = 'Too bad! You lost the match';
+                    winner.appendChild(endResult);
+                }
+            }
+
+            function checkEndGame() {
+                if(playerWins == 5 || computerWins == 5) {
+                    endGame();
+                }
+            }            
+
+        </script>
+    </body>
+</html>
